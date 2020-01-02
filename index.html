@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+	<meta name="description" content="Inspirofy is a random inspirational quote generator." />
+	<meta name="keywords" content="inspirofy by pagalprogrammer, Ankit Beniwal, Ank._t, Ankit, Beniwal" />
+	<meta name="author" content="Ankit Beniwal (pagalprogrammer)" />
+
+	<!-- Title -->
+	<title>inspirofy by pagalprogrammer</title>
+	
+	<link rel="manifest" href="inspirofy.webmanifest">
+	<link rel="shortcut icon" href="images/inspirofy.webp">
+	<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	
+	<noscript>
+		<link rel="stylesheet" href="css/mstyle.css" />
+	</noscript>
+</head>
+<body>
+	<main>
+		<p id="quote"></p>
+		<p id="author"></p>
+	</main>
+	<script>
+	fetch("https://quotable-quotes.p.rapidapi.com/randomQuotes", {
+		"method": "GET",
+		"headers": {
+			"x-rapidapi-host": "quotable-quotes.p.rapidapi.com",
+			"x-rapidapi-key": "ad508caadamsh7b2e033bfbea7f7p192242jsn833332cbd75e"
+		}
+	})
+	  .then(response => {
+		return response.json()
+	  })
+	  .then(data => {
+		document.getElementById("quote").innerHTML = data.quote;
+		document.getElementById("author").innerHTML = data.author;
+	  })
+	  .catch(err => {
+		
+	  })
+	</script>
+</body>
+</html>
+
