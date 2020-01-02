@@ -6,7 +6,7 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 	<link rel="shortcut icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 	<link rel="shortcut icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-	<link rel="manifest" href="site.webmanifest">
+	<link rel="manifest" href="inspirofy.webmanifest">
 	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#8c52ff">
 	<meta name="msapplication-TileColor" content="#8c52ff">
 	<meta name="msapplication-TileImage" content="mstile-144x144.png">
@@ -18,7 +18,7 @@
 	<meta name="author" content="Ankit Beniwal (pagalprogrammer)" />
 
 	<!-- Title -->
-	<title>inspirofy by pagalprogrammer</title>
+	<title>Inspirofy by pagalprogrammer</title>
 	
 	<link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 	<link rel="preload" href="https://fonts.googleapis.com/css?family=Aladin|Grand+Hotel&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -34,6 +34,7 @@
 		<p aria-label="Author" id="author"></p>
 	</main>
 	<script>
+	document.addEventListener('touchstart', onTouchStart, {passive: true});
 	fetch("https://quotable-quotes.p.rapidapi.com/randomQuotes", {
 		"method": "GET",
 		"headers": {
