@@ -25,7 +25,8 @@
 	<noscript>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin|Grand+Hotel&display=swap">
 	</noscript>
-	
+	<script src="https://kit.fontawesome.com/2aef0cec41.js" crossorigin="anonymous"></script>
+
 	<style>
 	@font-face {
 	  font-family: "Aladin";
@@ -41,9 +42,46 @@
 	  font-weight: 400;
 	  unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 	}
-	html{
+	body{
+		margin:0;
 		scroll-behavior: smooth;
-		background-color:hsl(0,0%,0%);
+		background: hsl(0,0%,0%) url(https://picsum.photos/1920/1080.webp?grayscale);
+		background-size:cover;
+	}
+	a{
+		color:hsl(260, 97%, 75%);
+	}
+	a:link{
+		text-decoration:none;
+		transition: 0.4s;
+	}
+	a:hover{
+		color: hsl(36, 93%, 43%);
+	}
+	#navigation-bar {
+		width: 70%;
+		padding: 20px;
+		margin: auto;
+		height: 60px;
+	}
+	#logo{
+		border-radius: 10%;
+		display: inline-block;
+		vertical-align: top;
+	}
+	#theme-switch{
+		font-size: xx-large;
+		color: white;
+		float: right;
+		border: none;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background: hsl(0, 1%, 37%);
+		transition: 0.4s;
+	}
+	#theme-switch:hover{
+		background: hsl(36, 93%, 43%);
 	}
 	main{
 		display: -webkit-box;
@@ -62,30 +100,45 @@
 		justify-content: center;
 		flex-flow: column nowrap;
 		text-align:center;
-		height: 98vh;
+		height: 84vh;
+	}
+	#quote,#author{
+		padding:10px 50px;
+		background-color: hsl(0, 0%, 100%);
+		color: hsl(0, 0%, 0%);
 	}
 	#quote{
-		color: white;
-		font: 500 xx-large 'Aladin', sans-serif !important;
+		font: 500 xxx-large 'Aladin', sans-serif !important;
 	}
 	#author{
-		color: white;
 		font: 400 x-large 'Grand Hotel', sans-serif !important;
+	}
+	footer{
+		text-align:center;
+		padding:18px; 
+		color: hsl(0, 0%, 100%);
+		background: hsl(0, 0%, 0%);
+		height: 14px;
 	}
 	</style>
 </head>
 <body>
-	<header>
-	
-	</header>
+	<nav id="navigation-bar">
+		<a href="#"><img id="logo" src="apple-touch-icon-60x60.png"></a>
+		<button id="theme-switch" onclick="darkTheme()" class="fas fa-moon"></button>
+	</nav>
 	<main>
 		<h2 aria-label="Quote" id="quote">Please Be Patient! Your Random Quote will be placed here.</h2>
 		<h3 aria-label="Author" id="author">- And the Author</h3>
 	</main>
 	<footer>
-	
+		Crafted with <span class="fas fa-heart" style="color:hsl(0, 100%, 50%);"></span> by <a href="https://pagalprogrammer.dev">pagalprogrammer</a>
 	</footer>
-	<script async>/*
+	<script defer>
+		var quote = document.getElementById("quote"),
+			author = document.getElementById("author"),
+			themeBtn = document.getElementById("theme-switch");
+	
 	fetch("https://quotable-quotes.p.rapidapi.com/randomQuotes", {
 		"method": "GET",
 		"headers": {
@@ -97,13 +150,33 @@
 		return response.json()
 	  })
 	  .then(data => {
-		document.getElementById("quote").innerHTML = data.quote;
-		document.getElementById("author").innerHTML = "- "+data.author;
+		quote.innerHTML = data.quote;
+		author.innerHTML = "- "+data.author;
 	  })
 	  .catch(err => {
 		
 	  })
-	</script>*/
+	  
+	  function darkTheme(){
+		themeBtn.onclick = lightTheme;
+		themeBtn.className = "fas fa-sun";
+		quote.style.background = "black";
+		author.style.background = "black";
+		quote.style.color = "white";
+		author.style.color = "white";
+		
+	  }
+	  
+	  function lightTheme(){
+		themeBtn.onclick = darkTheme;
+		themeBtn.className = "fas fa-moon";
+		quote.style.background = "white";
+		author.style.background = "white";
+		quote.style.color = "black";
+		author.style.color = "black";
+		
+	  }
+	</script>
 </body>
 </html>
 
