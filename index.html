@@ -30,8 +30,8 @@
 </head>
 <body>
 	<main>
-		<p id="quote"></p>
-		<p id="author"></p>
+		<p aria-label="Quote" id="quote"></p>
+		<p aria-label="Author" id="author"></p>
 	</main>
 	<script>
 	fetch("https://quotable-quotes.p.rapidapi.com/randomQuotes", {
@@ -46,7 +46,7 @@
 	  })
 	  .then(data => {
 		document.getElementById("quote").innerHTML = data.quote;
-		document.getElementById("author").innerHTML = data.author;
+		document.getElementById("author").innerHTML = "- "+data.author;
 	  })
 	  .catch(err => {
 		
