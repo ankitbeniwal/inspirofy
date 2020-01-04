@@ -70,7 +70,7 @@
 		display: inline-block;
 		vertical-align: top;
 	}
-	#theme-switch{
+	#reload-btn{
 		font-size: xx-large;
 		color: hsl(0, 0%, 100%);
 		float: right;
@@ -81,7 +81,7 @@
 		background: hsl(0, 1%, 37%);
 		transition: 0.4s;
 	}
-	#theme-switch:hover{
+	#reload-btn:hover{
 		background: hsl(36, 93%, 43%);
 	}
 	main{
@@ -123,13 +123,13 @@
 		color: hsl(0, 0%, 100%);
 		background: hsl(0, 0%, 0%);
 		height: 14px;
-	}
+	} 
 	</style>
 </head>
 <body>
 	<nav id="navigation-bar">
-		<a href="#"><img id="logo" src="apple-touch-icon-60x60.png"></a>
-		<button id="theme-switch" onclick="darkTheme()" class="fas fa-moon"></button>
+		<img id="logo" src="apple-touch-icon-60x60.png">
+		<button id="reload-btn" onclick="location.reload(true);" class="fas fa-redo"></button>
 	</nav>
 	<main>
 		<h2 aria-label="Quote" id="quote">Please Be Patient! Your Random Quote will be placed here.</h2>
@@ -141,9 +141,8 @@
 	<script defer>
 	var quote = document.getElementById("quote"),
 	author = document.getElementById("author"),
-	themeBtn = document.getElementById("theme-switch"),
 	body = document.getElementsByTagName("BODY")[0];
-	body.style.background = "hsl(0,0%,0%) url(https://picsum.photos/"+screen.width+"/"+screen.height+".webp?grayscale)";
+	body.style.background = "hsl(0,0%,0%) url(https://picsum.photos/"+screen.width+"/"+screen.height+".webp)";
 	
 	fetch("https://quotable-quotes.p.rapidapi.com/randomQuotes", {
 		"method": "GET",
@@ -163,25 +162,9 @@
 		
 	  })
 	  
-	  function darkTheme(){
-		themeBtn.onclick = lightTheme;
-		themeBtn.className = "fas fa-sun";
-		quote.style.background = "hsla(0, 0%, 0%, 0.7)";
-		author.style.background = "hsla(0, 0%, 0%, 0.7)";
-		quote.style.color = "hsl(0, 0%, 100%)";
-		author.style.color = "hsl(0, 0%, 100%)";
-		
-	  }
-	  
-	  function lightTheme(){
-		themeBtn.onclick = darkTheme;
-		themeBtn.className = "fas fa-moon";
-		quote.style.background = "hsla(0, 0%, 100%, 0.7)";
-		author.style.background = "hsla(0, 0%, 100%, 0.7)";
-		quote.style.color = "hsl(0, 0%, 0%)";
-		author.style.color = "hsl(0, 0%, 0%)";
-		
-	  }
+	  if ('serviceWorker' in navigator) {
+		  navigator.serviceWorker.register('/sw.js');
+		}
 	</script>
 </body>
 </html>
