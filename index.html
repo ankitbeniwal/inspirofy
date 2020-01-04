@@ -25,7 +25,7 @@
 	<noscript>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin|Grand+Hotel&display=swap">
 	</noscript>
-	<script src="https://kit.fontawesome.com/2aef0cec41.js" crossorigin="anonymous"></script>
+	<script defer src="https://kit.fontawesome.com/2aef0cec41.js" crossorigin="anonymous"></script>
 
 	<style>
 	@font-face {
@@ -128,15 +128,15 @@
 </head>
 <body>
 	<nav id="navigation-bar">
-		<img id="logo" src="apple-touch-icon-60x60.png">
-		<button id="reload-btn" onclick="location.reload(true);" class="fas fa-redo"></button>
+		<img id="logo" alt="Logo of Inspirofy" src="apple-touch-icon-60x60.png">
+		<button id="reload-btn" aria-label="Refresh Quote" onclick="location.reload(true);" class="fas fa-redo"></button>
 	</nav>
 	<main>
 		<h2 aria-label="Quote" id="quote">Please Be Patient! Your Random Quote will be placed here.</h2>
 		<h3 aria-label="Author" id="author">- And the Author</h3>
 	</main>
 	<footer>
-		Crafted with <span class="fas fa-heart" style="color:hsl(0, 100%, 50%);"></span> by <a href="https://pagalprogrammer.dev">pagalprogrammer</a>
+		Crafted with <span aria-label="love" class="fas fa-heart" style="color:hsl(0, 100%, 50%);"></span> by <a aria-label="Link to Developer's Site" href="https://pagalprogrammer.dev">pagalprogrammer</a>
 	</footer>
 	<script defer>
 	var quote = document.getElementById("quote"),
